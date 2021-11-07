@@ -1,0 +1,20 @@
+syntax = "proto3";
+package arcane;
+option go_package = "github.com/kzh/arcane/pkg/arcanepb";
+
+message StatusRequest {}
+
+message StatusResponse {
+    enum Status {
+        UNKNOWN = 0;
+        HEALTHY = 1;
+        UNHEALTHY = 2;
+    }
+
+    Status status = 1;
+    string error = 2;
+}
+
+service Arcane {
+    rpc Status(StatusRequest) returns (StatusResponse) {}
+}
