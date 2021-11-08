@@ -162,6 +162,201 @@ func (x *StatusResponse) GetError() string {
 	return ""
 }
 
+type KVGetRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+}
+
+func (x *KVGetRequest) Reset() {
+	*x = KVGetRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_arcanepb_arcane_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KVGetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KVGetRequest) ProtoMessage() {}
+
+func (x *KVGetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_arcanepb_arcane_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KVGetRequest.ProtoReflect.Descriptor instead.
+func (*KVGetRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_arcanepb_arcane_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *KVGetRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+type KVGetResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Key   string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+}
+
+func (x *KVGetResponse) Reset() {
+	*x = KVGetResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_arcanepb_arcane_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KVGetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KVGetResponse) ProtoMessage() {}
+
+func (x *KVGetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_arcanepb_arcane_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KVGetResponse.ProtoReflect.Descriptor instead.
+func (*KVGetResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_arcanepb_arcane_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *KVGetResponse) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *KVGetResponse) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+type KVPutRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Key   string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+}
+
+func (x *KVPutRequest) Reset() {
+	*x = KVPutRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_arcanepb_arcane_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KVPutRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KVPutRequest) ProtoMessage() {}
+
+func (x *KVPutRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_arcanepb_arcane_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KVPutRequest.ProtoReflect.Descriptor instead.
+func (*KVPutRequest) Descriptor() ([]byte, []int) {
+	return file_pkg_arcanepb_arcane_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *KVPutRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *KVPutRequest) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+type KVPutResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *KVPutResponse) Reset() {
+	*x = KVPutResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_pkg_arcanepb_arcane_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KVPutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KVPutResponse) ProtoMessage() {}
+
+func (x *KVPutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_arcanepb_arcane_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KVPutResponse.ProtoReflect.Descriptor instead.
+func (*KVPutResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_arcanepb_arcane_proto_rawDescGZIP(), []int{5}
+}
+
 var File_pkg_arcanepb_arcane_proto protoreflect.FileDescriptor
 
 var file_pkg_arcanepb_arcane_proto_rawDesc = []byte{
@@ -177,14 +372,31 @@ var file_pkg_arcanepb_arcane_proto_rawDesc = []byte{
 	0x72, 0x72, 0x6f, 0x72, 0x22, 0x31, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x0b,
 	0x0a, 0x07, 0x55, 0x4e, 0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x48,
 	0x45, 0x41, 0x4c, 0x54, 0x48, 0x59, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09, 0x55, 0x4e, 0x48, 0x45,
-	0x41, 0x4c, 0x54, 0x48, 0x59, 0x10, 0x02, 0x32, 0x43, 0x0a, 0x06, 0x41, 0x72, 0x63, 0x61, 0x6e,
-	0x65, 0x12, 0x39, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x15, 0x2e, 0x61, 0x72,
-	0x63, 0x61, 0x6e, 0x65, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x16, 0x2e, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65, 0x2e, 0x53, 0x74, 0x61, 0x74,
-	0x75, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x24, 0x5a, 0x22,
-	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6b, 0x7a, 0x68, 0x2f, 0x61,
-	0x72, 0x63, 0x61, 0x6e, 0x65, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65,
-	0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x41, 0x4c, 0x54, 0x48, 0x59, 0x10, 0x02, 0x22, 0x20, 0x0a, 0x0c, 0x4b, 0x56, 0x47, 0x65, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x22, 0x37, 0x0a, 0x0d, 0x4b, 0x56, 0x47,
+	0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65,
+	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x22, 0x36, 0x0a, 0x0c, 0x4b, 0x56, 0x50, 0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x0f, 0x0a, 0x0d, 0x4b, 0x56,
+	0x50, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xb3, 0x01, 0x0a, 0x06,
+	0x41, 0x72, 0x63, 0x61, 0x6e, 0x65, 0x12, 0x39, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x12, 0x15, 0x2e, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65,
+	0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x12, 0x36, 0x0a, 0x05, 0x4b, 0x56, 0x47, 0x65, 0x74, 0x12, 0x14, 0x2e, 0x61, 0x72, 0x63,
+	0x61, 0x6e, 0x65, 0x2e, 0x4b, 0x56, 0x47, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x15, 0x2e, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65, 0x2e, 0x4b, 0x56, 0x47, 0x65, 0x74, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x36, 0x0a, 0x05, 0x4b, 0x56, 0x50,
+	0x75, 0x74, 0x12, 0x14, 0x2e, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65, 0x2e, 0x4b, 0x56, 0x50, 0x75,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x61, 0x72, 0x63, 0x61, 0x6e,
+	0x65, 0x2e, 0x4b, 0x56, 0x50, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x42, 0x24, 0x5a, 0x22, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x6b, 0x7a, 0x68, 0x2f, 0x61, 0x72, 0x63, 0x61, 0x6e, 0x65, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x61,
+	0x72, 0x63, 0x61, 0x6e, 0x65, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -200,18 +412,26 @@ func file_pkg_arcanepb_arcane_proto_rawDescGZIP() []byte {
 }
 
 var file_pkg_arcanepb_arcane_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_pkg_arcanepb_arcane_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_pkg_arcanepb_arcane_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_pkg_arcanepb_arcane_proto_goTypes = []interface{}{
 	(StatusResponse_Status)(0), // 0: arcane.StatusResponse.Status
 	(*StatusRequest)(nil),      // 1: arcane.StatusRequest
 	(*StatusResponse)(nil),     // 2: arcane.StatusResponse
+	(*KVGetRequest)(nil),       // 3: arcane.KVGetRequest
+	(*KVGetResponse)(nil),      // 4: arcane.KVGetResponse
+	(*KVPutRequest)(nil),       // 5: arcane.KVPutRequest
+	(*KVPutResponse)(nil),      // 6: arcane.KVPutResponse
 }
 var file_pkg_arcanepb_arcane_proto_depIdxs = []int32{
 	0, // 0: arcane.StatusResponse.status:type_name -> arcane.StatusResponse.Status
 	1, // 1: arcane.Arcane.Status:input_type -> arcane.StatusRequest
-	2, // 2: arcane.Arcane.Status:output_type -> arcane.StatusResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
+	3, // 2: arcane.Arcane.KVGet:input_type -> arcane.KVGetRequest
+	5, // 3: arcane.Arcane.KVPut:input_type -> arcane.KVPutRequest
+	2, // 4: arcane.Arcane.Status:output_type -> arcane.StatusResponse
+	4, // 5: arcane.Arcane.KVGet:output_type -> arcane.KVGetResponse
+	6, // 6: arcane.Arcane.KVPut:output_type -> arcane.KVPutResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -247,6 +467,54 @@ func file_pkg_arcanepb_arcane_proto_init() {
 				return nil
 			}
 		}
+		file_pkg_arcanepb_arcane_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KVGetRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_arcanepb_arcane_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KVGetResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_arcanepb_arcane_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KVPutRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_pkg_arcanepb_arcane_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KVPutResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -254,7 +522,7 @@ func file_pkg_arcanepb_arcane_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_pkg_arcanepb_arcane_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

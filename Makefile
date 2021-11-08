@@ -8,3 +8,6 @@ bin/arcanecli:
 
 bin/arcane:
 	go build -o ./bin/arcane ./cmd/arcane
+
+clean:
+	rm ./bin/*

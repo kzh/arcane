@@ -19,6 +19,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ArcaneClient interface {
 	Status(ctx context.Context, in *StatusRequest, opts ...grpc.CallOption) (*StatusResponse, error)
+	KVGet(ctx context.Context, in *KVGetRequest, opts ...grpc.CallOption) (*KVGetResponse, error)
+	KVPut(ctx context.Context, in *KVPutRequest, opts ...grpc.CallOption) (*KVPutResponse, error)
 }
 
 type arcaneClient struct {
@@ -38,11 +40,31 @@ func (c *arcaneClient) Status(ctx context.Context, in *StatusRequest, opts ...gr
 	return out, nil
 }
 
+func (c *arcaneClient) KVGet(ctx context.Context, in *KVGetRequest, opts ...grpc.CallOption) (*KVGetResponse, error) {
+	out := new(KVGetResponse)
+	err := c.cc.Invoke(ctx, "/arcane.Arcane/KVGet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *arcaneClient) KVPut(ctx context.Context, in *KVPutRequest, opts ...grpc.CallOption) (*KVPutResponse, error) {
+	out := new(KVPutResponse)
+	err := c.cc.Invoke(ctx, "/arcane.Arcane/KVPut", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ArcaneServer is the server API for Arcane service.
 // All implementations must embed UnimplementedArcaneServer
 // for forward compatibility
 type ArcaneServer interface {
 	Status(context.Context, *StatusRequest) (*StatusResponse, error)
+	KVGet(context.Context, *KVGetRequest) (*KVGetResponse, error)
+	KVPut(context.Context, *KVPutRequest) (*KVPutResponse, error)
 	mustEmbedUnimplementedArcaneServer()
 }
 
@@ -52,6 +74,12 @@ type UnimplementedArcaneServer struct {
 
 func (UnimplementedArcaneServer) Status(context.Context, *StatusRequest) (*StatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Status not implemented")
+}
+func (UnimplementedArcaneServer) KVGet(context.Context, *KVGetRequest) (*KVGetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method KVGet not implemented")
+}
+func (UnimplementedArcaneServer) KVPut(context.Context, *KVPutRequest) (*KVPutResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method KVPut not implemented")
 }
 func (UnimplementedArcaneServer) mustEmbedUnimplementedArcaneServer() {}
 
@@ -84,6 +112,42 @@ func _Arcane_Status_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Arcane_KVGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(KVGetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArcaneServer).KVGet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/arcane.Arcane/KVGet",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArcaneServer).KVGet(ctx, req.(*KVGetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Arcane_KVPut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(KVPutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ArcaneServer).KVPut(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/arcane.Arcane/KVPut",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ArcaneServer).KVPut(ctx, req.(*KVPutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Arcane_ServiceDesc is the grpc.ServiceDesc for Arcane service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -94,6 +158,14 @@ var Arcane_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Status",
 			Handler:    _Arcane_Status_Handler,
+		},
+		{
+			MethodName: "KVGet",
+			Handler:    _Arcane_KVGet_Handler,
+		},
+		{
+			MethodName: "KVPut",
+			Handler:    _Arcane_KVPut_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

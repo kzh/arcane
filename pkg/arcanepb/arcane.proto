@@ -5,16 +5,34 @@ option go_package = "github.com/kzh/arcane/pkg/arcanepb";
 message StatusRequest {}
 
 message StatusResponse {
-    enum Status {
-        UNKNOWN = 0;
-        HEALTHY = 1;
-        UNHEALTHY = 2;
-    }
+  enum Status {
+    UNKNOWN = 0;
+    HEALTHY = 1;
+    UNHEALTHY = 2;
+  }
 
-    Status status = 1;
-    string error = 2;
+  Status status = 1;
+  string error = 2;
 }
 
+message KVGetRequest {
+  string key = 1;
+}
+
+message KVGetResponse {
+  string key = 1;
+  string value = 2;
+}
+
+message KVPutRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message KVPutResponse {}
+
 service Arcane {
-    rpc Status(StatusRequest) returns (StatusResponse) {}
+  rpc Status(StatusRequest) returns (StatusResponse) {}
+  rpc KVGet(KVGetRequest) returns (KVGetResponse) {}
+  rpc KVPut(KVPutRequest) returns (KVPutResponse) {}
 }

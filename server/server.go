@@ -25,3 +25,11 @@ func (s *Server) Status(ctx context.Context, request *arcanepb.StatusRequest) (*
 		Status: arcanepb.StatusResponse_HEALTHY,
 	}, nil
 }
+
+func (s *Server) KVGet(context.Context, *arcanepb.KVGetRequest) (*arcanepb.KVGetResponse, error) {
+	return &arcanepb.KVGetResponse{}, nil
+}
+
+func (s *Server) KVPut(context.Context, *arcanepb.KVPutRequest) (*arcanepb.KVPutResponse, error) {
+	return &arcanepb.KVPutResponse{}, nil
+}
