@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "cli_lib",
+    srcs = [
+        "main.go",
+        "status.go",
+    ],
+    importpath = "github.com/kzh/arcane/cmd/cli",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//pkg/arcanepb",
+        "@com_github_spf13_cobra//:cobra",
+        "@org_golang_google_grpc//:grpc",
+        "@org_golang_google_protobuf//encoding/protojson",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_binary(
+    name = "cli",
+    embed = [":cli_lib"],
+    visibility = ["//visibility:public"],
+)
