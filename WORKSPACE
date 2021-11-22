@@ -32,3 +32,33 @@ go_rules_dependencies()
 go_register_toolchains(version = "1.17.2")
 
 gazelle_dependencies()
+
+http_archive(
+    name = "io_bazel_rules_docker",
+    sha256 = "4349f2b0b45c860dd2ffe18802e9f79183806af93ce5921fb12cbd6c07ab69a8",
+    strip_prefix = "rules_docker-0.21.0",
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.21.0/rules_docker-v0.21.0.tar.gz"],
+)
+
+load(
+    "@io_bazel_rules_docker//repositories:repositories.bzl",
+    container_repositories = "repositories",
+)
+container_repositories()
+
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+
+container_deps()
+
+load(
+    "@io_bazel_rules_docker//container:container.bzl",
+    "container_pull",
+)
+
+container_pull(
+    name = "alpine_linux_amd64",
+    registry = "index.docker.io",
+    repository = "library/alpine",
+    tag = "3.8",
+    digest = "sha256:954b378c375d852eb3c63ab88978f640b4348b01c1b3456a024a81536dafbbf4"
+)
