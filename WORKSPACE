@@ -56,9 +56,9 @@ load(
 )
 
 container_pull(
-    name = "alpine_linux_amd64",
+    name = "ubuntu",
     registry = "index.docker.io",
-    repository = "library/alpine",
-    tag = "3.8",
-    digest = "sha256:954b378c375d852eb3c63ab88978f640b4348b01c1b3456a024a81536dafbbf4"
+    repository = "ubuntu",
+    tag = "21.10",
+    digest = "sha256:d0b4808a158b42b6efb3ae93abb567b1cb6ee097221813c0315390de0fa320b9"
 )

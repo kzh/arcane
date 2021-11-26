@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: arcane
+build:
+  artifacts:
+    - image: ghcr.io/kzh/arcane
+      bazel:
+        target: //cmd/arcane:image.tar
+deploy:
+  helm:
+    releases:
+      - name: arcane
+        chartPath: cloud/charts/arcane
+        artifactOverrides:
+          image: ghcr.io/kzh/arcane
+        imageStrategy:
+          helm: { }

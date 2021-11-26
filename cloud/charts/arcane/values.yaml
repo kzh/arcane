@@ -1,0 +1,4 @@
+image:
+  repository: ghcr.io/kzh/arcane
+  pullPolicy: IfNotPresent
+  tag: latest
