@@ -1,13 +1,12 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
-    name = "server",
-    srcs = ["server.go"],
-    importpath = "github.com/kzh/arcane/server",
+    name = "database",
+    srcs = ["db.go"],
+    embedsrcs = ["migrations"],
+    importpath = "github.com/kzh/arcane/pkg/database",
     visibility = ["//visibility:public"],
     deps = [
-        "//pkg/arcanepb",
-        "//pkg/database",
         "@com_github_gobuffalo_pop_v6//:pop",
         "@org_uber_go_zap//:zap",
     ],
@@ -15,6 +14,6 @@ go_library(
 
 alias(
     name = "go_default_library",
-    actual = ":server",
+    actual = ":database",
     visibility = ["//visibility:public"],
 )

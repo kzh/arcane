@@ -2,6 +2,8 @@ package server
 
 import (
 	"context"
+	"github.com/gobuffalo/pop/v6"
+	"github.com/kzh/arcane/pkg/database"
 
 	"github.com/kzh/arcane/pkg/arcanepb"
 
@@ -11,11 +13,24 @@ import (
 var _ arcanepb.ArcaneServer = (*Server)(nil)
 
 type Server struct {
+	conn *pop.Connection
+
 	arcanepb.UnimplementedArcaneServer
 }
 
-func NewServer() *Server {
-	return &Server{}
+func NewServer() (*Server, error) {
+	conn, err := database.Connect()
+	if err != nil {
+		return nil, err
+	}
+
+	if err := database.Migrate(conn); err != nil {
+		return nil, err
+	}
+
+	return &Server{
+		conn: conn,
+	}, nil
 }
 
 func (s *Server) Status(ctx context.Context, request *arcanepb.StatusRequest) (*arcanepb.StatusResponse, error) {

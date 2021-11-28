@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: arcane
+  namespace: arcane
 spec:
   selector:
     matchLabels:
@@ -12,10 +13,29 @@ spec:
         app.kubernetes.io/name: arcane
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: tcp
-              containerPort: 3333
-              protocol: TCP
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        volumeMounts:
+        - name: client-certs
+          mountPath: /cockroach/
+        ports:
+        - name: tcp
+          containerPort: 3333
+          protocol: TCP
+      volumes:
+      - name: client-certs
+        projected:
+          sources:
+          - secret:
+              name: cockroachdb-node
+              items:
+              - key: ca.crt
+                path: ca.crt
+          - secret:
+              name: cockroachdb-root
+              items:
+              - key: tls.crt
+                path: client.root.crt
+              - key: tls.key
+                path: client.root.key

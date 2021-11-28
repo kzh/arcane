@@ -23,7 +23,12 @@ var rootCmd = &cobra.Command{
 			return
 		}
 
-		s := server.NewServer()
+		s, err := server.NewServer()
+		if err != nil {
+			zap.L().Error("new server", zap.Error(err))
+			return
+		}
+
 		grpcServer := grpc.NewServer([]grpc.ServerOption{}...)
 		arcanepb.RegisterArcaneServer(grpcServer, s)
 

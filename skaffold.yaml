@@ -16,3 +16,8 @@ deploy:
           image: ghcr.io/kzh/arcane
         imageStrategy:
           helm: { }
+portForward:
+  - resourceType: deployment
+    resourceName: arcane
+    namespace: arcane
+    port: 3333
