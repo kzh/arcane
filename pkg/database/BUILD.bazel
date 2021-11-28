@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "database",
     srcs = ["db.go"],
-    embedsrcs = ["migrations"],
+    embedsrcs = ["migrations/20211127084448_base.up.sql"],
     importpath = "github.com/kzh/arcane/pkg/database",
     visibility = ["//visibility:public"],
     deps = [

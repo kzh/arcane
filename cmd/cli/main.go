@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/kzh/arcane/cmd/cli/kv"
+	"github.com/kzh/arcane/cmd/cli/status"
 	"go.uber.org/zap"
 	"log"
 	"os"
@@ -21,7 +23,10 @@ func main() {
 	c := &cobra.Command{
 		Use: "arcanecli",
 	}
-	c.AddCommand(statusCmd)
+	c.AddCommand(
+		status.Cmd(),
+		kv.Cmd(),
+	)
 
 	if err := c.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)

@@ -3,9 +3,9 @@ package server
 import (
 	"context"
 	"github.com/gobuffalo/pop/v6"
-	"github.com/kzh/arcane/pkg/database"
-
 	"github.com/kzh/arcane/pkg/arcanepb"
+	"github.com/kzh/arcane/pkg/database"
+	"github.com/kzh/arcane/pkg/models"
 
 	"go.uber.org/zap"
 )
@@ -41,10 +41,22 @@ func (s *Server) Status(ctx context.Context, request *arcanepb.StatusRequest) (*
 	}, nil
 }
 
-func (s *Server) KVGet(context.Context, *arcanepb.KVGetRequest) (*arcanepb.KVGetResponse, error) {
-	return &arcanepb.KVGetResponse{}, nil
+func (s *Server) KVGet(ctx context.Context, request *arcanepb.KVGetRequest) (*arcanepb.KVGetResponse, error) {
+	kv, err := models.KVs.ByKey(s.conn, request.Key)
+	if err != nil {
+		return nil, err
+	}
+	return &arcanepb.KVGetResponse{
+		Key:   kv.Key,
+		Value: kv.Value,
+	}, nil
 }
 
-func (s *Server) KVPut(context.Context, *arcanepb.KVPutRequest) (*arcanepb.KVPutResponse, error) {
-	return &arcanepb.KVPutResponse{}, nil
+func (s *Server) KVPut(ctx context.Context, request *arcanepb.KVPutRequest) (*arcanepb.KVPutResponse, error) {
+	kv := &models.KV{
+		Key:   request.Key,
+		Value: request.Value,
+	}
+	err := kv.Create(s.conn)
+	return &arcanepb.KVPutResponse{}, err
 }

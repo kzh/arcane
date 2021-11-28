@@ -1,4 +1,6 @@
-CREATE TABLE kv (
-    key TEXT PRIMARY KEY,
+CREATE TABLE kvs
+(
+    id    UUID,
+    key   TEXT PRIMARY KEY,
     value TEXT
 );

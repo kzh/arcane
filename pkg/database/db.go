@@ -8,7 +8,7 @@ import (
 
 func Connect() (*pop.Connection, error) {
 	config := &pop.ConnectionDetails{
-		Dialect:  "postgres",
+		Dialect:  "cockroach",
 		Database: "arcane",
 		User:     "root",
 		Host:     "cockroachdb-public.crdb",
